@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Colecionador de Rostos Ficha</title>
+  </head>
+  <body >
+
+
+    <h1 class="title">Colecionador de Rostos</h1>
+
+
+
+
+
+
+
+
+
+
+    <!-- modal -->
+    <div id="diceAttributes" class="modal">
+      <div class="modal-content">
+        <img class="modalDice" src="./img/dado.png" alt="Dado" />
+        <h2 id="diceNumber"></h2>
+        <p id="diceType"></p>
+      </div>
+    </div>
+
+    <div id="lifeModal" class="modal with-input">
+      <div class="modal-content">
+        <h2>MODIFICAR VIDA</h2>
+        <hr />
+        <form class="formModal" id="changeLife">
+          <h3>Atual</h3>
+          <input type="number" name="current" id="lifeCurrent" min="0" />
+          <h3>Máximo</h3>
+          <input type="number" name="max" id="lifeMax" min="0" />
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+
+    <div id="lifeModalo" class="modal with-input">
+      <div class="modal-content">
+        <h2>MODIFICAR PONTOS DE ESFORÇO</h2>
+        <hr />
+        <form class="formModal" id="changeLifeo">
+          <h3>Atual</h3>
+          <input type="number" name="currento" id="lifeCurrento" min="0" />
+          <h3>Máximo</h3>
+          <input type="number" name="maxo" id="lifeMaxo" min="0" />
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+
+    <div id="sanityModal" class="modal with-input">
+      <div class="modal-content">
+        <h2>MODIFICAR SANIDADE</h2>
+        <hr />
+        <form class="formModal" id="changeSanity">
+          <h3>Atual</h3>
+          <input
+            type="number"
+            name="sanityCurrent"
+            id="sanityCurrent"
+            min="0"
+          />
+          <h3>Máximo</h3>
+          <input type="number" name="sanityMax" id="sanityMax" min="0" />
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+
+    <div id="addWeaponModal" class="modal with-input">
+      <div class="modal-content">
+        <h2>ADICIONAR ARMA</h2>
+        <hr />
+        <form id="addWeaponForm" action="">
+          <table class="weapons" id="newWeapon">
+            <tr>
+              <th>Nome</th>
+              <th>Tipo de Dano</th>
+              <th>Dano</th>
+              <th>Alcance</th>
+              <th>Crítico</th>
+              <th>Mod. Crítico</th>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="weaponName" id="weaponName" />
+              </td>
+              <td>
+                <select id="weaponType" name="weaponType">
+                  <option value="fire">Balistico</option>
+                  <option value="fight">Fisico</option>
+                  <option value="Ritual">Ritual</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="weaponDamage" id="weaponDamage" />
+              </td>
+              <td>
+                <input type="text" name="weaponDamagetwo" id="weaponDamagetwo" />
+              </td>
+              <td>
+                <input type="text" name="weaponDamagethree" id="weaponDamagethree" />
+              </td>
+
+              <td>
+                <input type="text" name="weaponDamagemod" id="weaponDamagemod" />
+              </td>
+            </tr>
+          </table>
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      
+      <div class="character">
+        <div class="characterHeader">
+          <img class="characterPhoto" src="./img/character.png" alt="Foto" />
+        </div>
+
+
+
+        <div class="bars">
+          <h4 class="sinalisarvida">Vida</h4>
+
+
+            
+      
+
+            <div class="lifelocal">
+              <button onclick="tirar()"class="tira">-1</button>
+              <div class="bar">
+                <div class="lifeBar" style="width: 0%">
+                <p class="barcount" id="lifeCount"></p>   
+                  </div>
+                  </div>
+                  <button onclick="add()"class="add">+1</button>
+                  
+            </div>
+          
+       
+
+
+            <h4 class="sinalisarvida"  >Pontos de Esforço</h4>
+            <div  class="lifelocalo">
+              <button onclick="tiraro()"class="tirao" >-1</button>
+              <div   class="baro">
+                <div class="lifeBaro" style="width: 0%">
+                <p class="barcounto" id="lifeCounto"></p>   
+                  </div>
+                  </div>
+                  <button onclick="addo()"class="addo">+1</button>
+                  
+            </div>
+
+
+
+
+
+
+
+
+
+          </div>
+
+        <div class="extra">
+          
+
+          <div class="body">
+            <p>Movimento</p>
+            <input type="text"  value="9" name="damage1" id="damage1" disabled/>
+          </div>
+
+          
+
+          <div class="damage">
+            <p>Ações/Reações</p>
+            <input type="text" name="damage2" value="2/2" id="damage2" disabled/>
+          </div>
+
+          <div class="exposure">
+            <p>Defesa Total</p>
+            <input type="text" value="25"  name="damage3" id="damage3" disabled/>
+          </div>
+
+          <div class="exposuree">
+            <p>Dano/Sanidade</p>
+              <input type="text"  value="2d6" name="damage1" id="damage1" disabled/>
+            </div>
+
+            
+        </div>
+
+
+        
+        
+        <div class="resistencias">
+          <div class="RB">
+            <p>RB</p>
+            <input type="text" name="RB" Value="05" id="RB" disabled>
+          </div>
+  
+          <div class="RF">
+            <p>RF</p>
+            <input type="text" name="RF" Value="10" id="RF" disabled>
+          </div>
+  
+  
+          <div class="RS">
+            <p>RS</p>
+            <input type="text" name="RS" Value="-10" id="RS" disabled>
+          </div>
+  
+          <div class="RM">
+            <p>RM</p>
+            <input type="text" name="RM" Value="05" id="RM" disabled>
+          </div>
+  
+  
+          <div class="RE">
+            <p>RE</p>
+            <input type="text" name="RE" Value="15" id="RE" disabled>
+          </div>
+  
+          <div class="RC">
+            <p>RC</p>
+            <input type="text" name="RC" Value="20" id="RC" disabled>
+          </div>
+
+
+        </div>
+
+
+        
+        
+
+
+
+
+
+
+
+      </div>
+
+
+
+      
+
+
+      <div class="attributes border">
+        <h2 class="grid-title">ATRIBUTOS</h2>
+        <hr />
+
+        <div class="attributesList" id="attributesList"></div>
+      </div>
+
+
+      
+      <div class="DIVISÃO"></div>
+
+
+      
+      <div class="pericias border">
+        <h2 class="grid-title">PERICIA</h2>
+        <hr />
+        <div class="periciasList" id="periciasList"></div>
+      </div>
+
+      
+      <div class="DIVISÃO"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="combat border">
+        <div class="combatHeader">
+          <h2 class="grid-title">COMBATE</h2>
+        </div>
+        <hr>
+
+        <table class="weapons" id="weapons">
+          <tbody><tr>
+              <th>Nome</th>
+              <th>Tipo de Dano</th>
+              <th>Dano</th>
+              <th>Alcance</th>
+              <th>Crítico</th>
+              <th>Mod. Crítico</th>
+          </tr>
+          
+        <tr id="weapon_0">
+  
+        <td>
+                <i class="fa fa-trash-o trashcan"></i>
+            </button>
+            
+            Garrada
+        </td>
+        <td>Fisico e Conhecimento</td>
+        <td><img onclick="rollDano_0()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">1d10+6+1d4</td>
+        <td>Adjacente</td>
+        <td><img onclick="rollDano_1()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">19 a 20</td>
+        <td>+2d</td>
+        </tr>
+
+        <tr id="weapon_1">
+  
+          <td>
+                  <i class="fa fa-trash-o trashcan"></i>
+              </button>
+              
+              Garrada Furtiva
+          </td>
+          <td>Fisico e Conhecimento</td>
+          <td><img onclick="rollDano_2()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">1d10+6+1d4</td>
+          <td>Adjacente</td>
+          <td><img onclick="rollDano_3()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">19 a 20</td>
+          <td>+2d</td>
+          </tr>
+
+
+
+          <tr id="weapon_0">
+  
+            <td>
+                    <i class="fa fa-trash-o trashcan"></i>
+                </button>
+                
+                Olhar
+            </td>
+            <td>Fisico e Conhecimento</td>
+            <td><img onclick="rollDano_4()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">1d10+6+1d4</td>
+            <td>Adjacente</td>
+            <td><img  class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; ">---</td>
+            <td>---</td>
+            </tr>
+
+
+
+
+
+ </tbody></table>
+        
+
+
+
+      </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      <div class="DIVISÃO"></div>
+
+
+      <div class="habilidades border">
+        <h2 class="grid-titleh">Habilidades, Poderes e Comportamentos</h2>
+        <hr />
+
+
+<div class="hpcomp">
+
+
+
+
+  <div class="comportamentos">
+    <h2>ELEMENTO DE CONHECIMENTO</h2>
+    <hr />
+    <h4>
+    </h4>
+</div>
+
+  <div class="comportamentos">
+    <h2>COMPORTAMENTO:</h2>
+    <hr />
+    <h4>O colecionador é uma criatura inteligente, ele é extremamente estrategista e age de forma coordenada e objetiva, ele está sempre buscando rostos específicos.
+    </h4>
+</div>
+
+
+
+
+
+
+
+<div class="comportamentos">
+    <h2>LETAL E VELOZ:</h2>
+    <hr />
+    <h4>O colecionador adiciona seu valor de Agilidade no valor de seu dano em vez do valor de Força.
+    </h4>
+</div>
+
+
+
+<div class="comportamentos">
+  <h2>OLHOS NA PAREDE:</h2>
+  <hr />
+  <h4>O colecionador pode gastar 2 PE e uma ação padrão   <label onclick="tiraro2()" class="tirao" style="cursor: pointer; border-radius: 5px; border: solid; border-width: 0.1px; border-color: #cca700;" >Usar</label>   , para jogar uma das máscaras na parede mais próxima. Ao fazer isto, os olhos da máscara acompanham os jogadores tornando o colecionador imune a condição "flanqueado" ou a ataques furtivos.
+  </h4>
+</div>
+
+<div class="comportamentos">
+  <h2>NOVA PEÇA:</h2>
+  <hr />
+  <h4>O colecionador pode gastar 3 PE   <label onclick="adddi()"class="tirao" style="cursor: pointer; border-radius: 5px; border: solid; border-width: 0.1px; border-color: #cca700;" >Usar</label>    e uma ação completa, e usar esta habilidade em um jogador que esteja morrendo. Ao fazer isto, o colecionador arranca o rosto do jogador e o custará em seu manto, ao realizar essa ação o colecionador regenera 1d12 de PV e PE.
+  </h4>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      </div>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+      
+
+
+  
+    
+    
+      
+
+    </div>
+    
+
+
+
+    <!-- <div class="modal-overlay active">
+            <div class="modal">
+                <h2>MODIFICAR VIDA</h2>
+                <hr>
+                <form id="changeLife">
+                    <span class="modalspan">Atual</span>
+                    <input class="modalinput" type="number" name="current" id="lifeCurrent" min="0">
+                    <span class="modalspan">Máximo</span>
+                    <input class="modalinput" type="number" name="max" id="lifeMax" min="0">
+                    <input class="modalbutton" type="submit" value="Salvar">
+                </form>
+            </div>
+        </div> -->
+
+
+
+        <!-- <div class="modal-overlay active">
+            <div class="modal">
+                <h2>MODIFICAR OCULTISMO</h2>
+                <hr>
+                <form id="changeLifeO">
+                    <span class="modalspan">Atual</span>
+                    <input class="modalinput" type="number" name="current" id="lifeCurrentO" min="0">
+                    <span class="modalspan">Máximo</span>
+                    <input class="modalinput" type="number" name="max" id="lifeMaxO" min="0">
+                    <input class="modalbutton" type="submit" value="Salvar">
+                </form>
+            </div>
+        </div> -->
+    <script src="characterSheet.js"></script>
+    <script>
+        
+
+        //espada
+    function rollDano_0() {
+      console.log(this)
+    
+    
+    
+      diceModal.css('display', 'block')
+    
+      setTimeout(() => {
+        $('.modalDice').css('transform', 'rotate(360deg)')
+        $('.modalDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      setTimeout(() => {
+        $('.sanityDice').css('transform', 'rotate(360deg)')
+        $('.sanityDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      
+    
+      setTimeout(() => {
+        let danoz = rollDice('1d10') + 6
+        let danodois = rollDice('1d4')
+        const diceNumber = danoz + danodois
+        const diceType = "(Fis)" +danoz+ "+" +danodois+ "(Conhecimento)"
+        $('#diceNumber').text(diceNumber)
+        $('#diceType').text(diceType)
+    
+        setTimeout(() => {
+          diceModal.css('display', 'none')
+          $('#diceNumber').text('')
+          $('#diceType').text('')
+    
+          $('.modalDice').css('transform', 'rotate(0deg)')
+          $('.modalDice').css('-webkit-transform', 'rotate(0deg)')
+        }, 100000000000)
+      }, 2000)
+    }
+
+
+    function rollDano_1() {
+      console.log(this)
+    
+    
+    
+      diceModal.css('display', 'block')
+    
+      setTimeout(() => {
+        $('.modalDice').css('transform', 'rotate(360deg)')
+        $('.modalDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      setTimeout(() => {
+        $('.sanityDice').css('transform', 'rotate(360deg)')
+        $('.sanityDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      
+    
+      setTimeout(() => {
+        let danoz = rollDice('3d10') + 6
+        let danodois = rollDice('1d4')
+        const diceNumber = danoz + danodois
+        const diceType = "(Fis)" +danoz+ "+" +danodois+ "(Conhecimento)"
+        $('#diceNumber').text(diceNumber)
+        $('#diceType').text(diceType)
+    
+        setTimeout(() => {
+          diceModal.css('display', 'none')
+          $('#diceNumber').text('')
+          $('#diceType').text('')
+    
+          $('.modalDice').css('transform', 'rotate(0deg)')
+          $('.modalDice').css('-webkit-transform', 'rotate(0deg)')
+        }, 100000000000)
+      }, 2000)
+    }
+
+
+
+
+    </script>
+  </body>
+</html>
