@@ -8,7 +8,7 @@ const data = {
   residence: 'São paulo',
 
   life: {
-    current: 120,
+    current: 60,
     max: 120,
   },
   sanity: {
@@ -17,7 +17,7 @@ const data = {
   },
 
   lifeo: {
-    current: 55,
+    current: 30,
     max: 55,
   },
 
