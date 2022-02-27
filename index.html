@@ -202,8 +202,8 @@
           </div>
 
           <div class="exposuree">
-            <p>Dano/Sanidade</p>
-              <input type="text"  value="2d6" name="damage1" id="damage1" disabled/>
+            <p onclick="rolarsanidade()" style="cursor: pointer;">Dano/Sanidade</p>
+              <input  type="text"  value="2d6" name="damage1" id="damage1"  disabled/>
             </div>
 
             
@@ -329,7 +329,7 @@
             Garrada
         </td>
         <td>Fisico e Conhecimento</td>
-        <td><img onclick="rollDano_0()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">1d10+6+1d4</td>
+        <td><img onclick="rollDano_0()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">2d8+3+3d6</td>
         <td>Adjacente</td>
         <td><img onclick="rollDano_1()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">19 a 20</td>
         <td>+2d</td>
@@ -344,7 +344,7 @@
               Garrada Furtiva
           </td>
           <td>Fisico e Conhecimento</td>
-          <td><img onclick="rollDano_2()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">1d10+6+1d4</td>
+          <td><img onclick="rollDano_2()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">6d8+3+3d6</td>
           <td>Adjacente</td>
           <td><img onclick="rollDano_3()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">19 a 20</td>
           <td>+2d</td>
@@ -352,7 +352,7 @@
 
 
 
-          <tr id="weapon_0">
+          <tr id="weapon_2">
   
             <td>
                     <i class="fa fa-trash-o trashcan"></i>
@@ -360,9 +360,9 @@
                 
                 Olhar
             </td>
-            <td>Fisico e Conhecimento</td>
-            <td><img onclick="rollDano_4()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">1d10+6+1d4</td>
-            <td>Adjacente</td>
+            <td>Conhecimento</td>
+            <td><img onclick="rollDano_4()" class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; cursor: pointer;">2d8</td>
+            <td>Olhar</td>
             <td><img  class="attributeDice" src="./img/dado.png" alt="Dado" style="display: block; margin-left: auto; margin-right: auto; height: 20px; ">---</td>
             <td>---</td>
             </tr>
@@ -450,6 +450,36 @@
   <h4>O colecionador pode gastar 3 PE   <label onclick="adddi()"class="tirao" style="cursor: pointer; border-radius: 5px; border: solid; border-width: 0.1px; border-color: #cca700;" >Usar</label>    e uma ação completa, e usar esta habilidade em um jogador que esteja morrendo. Ao fazer isto, o colecionador arranca o rosto do jogador e o custará em seu manto, ao realizar essa ação o colecionador regenera 1d12 de PV e PE.
   </h4>
 </div>
+
+<div class="comportamentos">
+  <h2>TRAZER A VIDA:</h2>
+  <hr />
+  <h4>O colecionador gasta uma ação padrão e 4 PE   <label onclick="tiraro4()"class="tirao" style="cursor: pointer; border-radius: 5px; border: solid; border-width: 0.1px; border-color: #cca700;" >Usar</label>    , e arranca um dos rostos do seu manto. Ao fazer isto, o colecionador invoca uma criatura humanoide descontrolada, com os mesmos status de um zumbi de sangue padrão. (Ele só pode invocar 3 criaturas por cena)
+  </h4>
+</div>
+
+
+
+<div class="comportamentos">
+  <h2>AVALIAÇÃO:</h2>
+  <hr />
+  <h4>O colecionador encara o rosto de um alvo, gastando uma ação de movimento e 2 PE   <label onclick="tiraro3()" class="tirao" style="cursor: pointer; border-radius: 5px; border: solid; border-width: 0.1px; border-color: #cca700;" >Usar</label>   . Ao fazer isto, o alvo da habilidade tem, como se fosse, a mente sendo derretida, levando 2d8 de dano de conhecimento.
+  </h4>
+</div>
+
+
+
+<div class="comportamentos">
+  <h2>OLHOS APAGADOS:</h2>
+  <hr />
+  <h4>Com uma ação livre, O colecionador pode entrar em modo furtivo em qualquer situação, sem a necessidade de teste. Para o alvo conseguir percebe-lo, terá que fazer um teste de Percepção CD 25.
+  </h4>
+</div>
+
+
+
+
+
 
 
 
@@ -559,8 +589,8 @@
       
     
       setTimeout(() => {
-        let danoz = rollDice('1d10') + 6
-        let danodois = rollDice('1d4')
+        let danoz = rollDice('2d8') + 3
+        let danodois = rollDice('3d6')
         const diceNumber = danoz + danodois
         const diceType = "(Fis)" +danoz+ "+" +danodois+ "(Conhecimento)"
         $('#diceNumber').text(diceNumber)
@@ -598,8 +628,8 @@
       
     
       setTimeout(() => {
-        let danoz = rollDice('3d10') + 6
-        let danodois = rollDice('1d4')
+        let danoz = rollDice('4d8') + 3
+        let danodois = rollDice('3d6')
         const diceNumber = danoz + danodois
         const diceType = "(Fis)" +danoz+ "+" +danodois+ "(Conhecimento)"
         $('#diceNumber').text(diceNumber)
@@ -618,6 +648,186 @@
 
 
 
+
+
+
+
+
+
+
+    function rollDano_2() {
+      console.log(this)
+    
+    
+    
+      diceModal.css('display', 'block')
+    
+      setTimeout(() => {
+        $('.modalDice').css('transform', 'rotate(360deg)')
+        $('.modalDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      setTimeout(() => {
+        $('.sanityDice').css('transform', 'rotate(360deg)')
+        $('.sanityDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      
+    
+      setTimeout(() => {
+        let danoz = rollDice('6d8') + 3
+        let danodois = rollDice('3d6')
+        const diceNumber = danoz + danodois
+        const diceType = "(Fis)" +danoz+ "+" +danodois+ "(Conhecimento)"
+        $('#diceNumber').text(diceNumber)
+        $('#diceType').text(diceType)
+    
+        setTimeout(() => {
+          diceModal.css('display', 'none')
+          $('#diceNumber').text('')
+          $('#diceType').text('')
+    
+          $('.modalDice').css('transform', 'rotate(0deg)')
+          $('.modalDice').css('-webkit-transform', 'rotate(0deg)')
+        }, 100000000000)
+      }, 2000)
+    }
+
+
+    function rollDano_3() {
+      console.log(this)
+    
+    
+    
+      diceModal.css('display', 'block')
+    
+      setTimeout(() => {
+        $('.modalDice').css('transform', 'rotate(360deg)')
+        $('.modalDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      setTimeout(() => {
+        $('.sanityDice').css('transform', 'rotate(360deg)')
+        $('.sanityDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      
+    
+      setTimeout(() => {
+        let danoz = rollDice('8d8') + 3
+        let danodois = rollDice('3d6')
+        const diceNumber = danoz + danodois
+        const diceType = "(Fis)" +danoz+ "+" +danodois+ "(Conhecimento)"
+        $('#diceNumber').text(diceNumber)
+        $('#diceType').text(diceType)
+    
+        setTimeout(() => {
+          diceModal.css('display', 'none')
+          $('#diceNumber').text('')
+          $('#diceType').text('')
+    
+          $('.modalDice').css('transform', 'rotate(0deg)')
+          $('.modalDice').css('-webkit-transform', 'rotate(0deg)')
+        }, 100000000000)
+      }, 2000)
+    }
+
+
+
+
+
+
+
+
+    function rollDano_4() {
+      console.log(this)
+    
+    
+    
+      diceModal.css('display', 'block')
+    
+      setTimeout(() => {
+        $('.modalDice').css('transform', 'rotate(360deg)')
+        $('.modalDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      setTimeout(() => {
+        $('.sanityDice').css('transform', 'rotate(360deg)')
+        $('.sanityDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      
+    
+      setTimeout(() => {
+        let danoz = rollDice('2d8') 
+        const diceNumber = danoz 
+        const diceType =  "(Conhecimento)"
+        $('#diceNumber').text(diceNumber)
+        $('#diceType').text(diceType)
+    
+        setTimeout(() => {
+          diceModal.css('display', 'none')
+          $('#diceNumber').text('')
+          $('#diceType').text('')
+    
+          $('.modalDice').css('transform', 'rotate(0deg)')
+          $('.modalDice').css('-webkit-transform', 'rotate(0deg)')
+        }, 100000000000)
+      }, 2000)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function rolarsanidade() {
+      console.log(this)
+    
+    
+    
+      diceModal.css('display', 'block')
+    
+      setTimeout(() => {
+        $('.modalDice').css('transform', 'rotate(360deg)')
+        $('.modalDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      setTimeout(() => {
+        $('.sanityDice').css('transform', 'rotate(360deg)')
+        $('.sanityDice').css('-webkit-transform', 'rotate(360deg)')
+      }, 1000)
+    
+      
+    
+      setTimeout(() => {
+        let danoz = rollDice('2d6') 
+        const diceNumber = danoz 
+        const diceType =  "(Sanidade)"
+        $('#diceNumber').text(diceNumber)
+        $('#diceType').text(diceType)
+    
+        setTimeout(() => {
+          diceModal.css('display', 'none')
+          $('#diceNumber').text('')
+          $('#diceType').text('')
+    
+          $('.modalDice').css('transform', 'rotate(0deg)')
+          $('.modalDice').css('-webkit-transform', 'rotate(0deg)')
+        }, 100000000000)
+      }, 2000)
+    }
+    
 
     </script>
   </body>
