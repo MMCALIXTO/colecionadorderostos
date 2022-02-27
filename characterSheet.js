@@ -8,7 +8,7 @@ const data = {
   residence: 'São paulo',
 
   life: {
-    current: 60,
+    current: 120,
     max: 120,
   },
   sanity: {
@@ -17,7 +17,7 @@ const data = {
   },
 
   lifeo: {
-    current: 30,
+    current: 55,
     max: 55,
   },
 
@@ -736,7 +736,41 @@ function tiraro2(){
   data.life.current = current
   data.life.max = max
 
+  const zero = 0
+  if (current < zero) {
+    current.add(++zero)
+  }
+
+  $('.lifeBaro').css('width', `${calculateBar(data.life.current, data.life.max)}%`)
+  
+  $('#lifeCurrento').val(data.life.current) 
+  $('#lifeCounto').text(`${data.life.current}/${data.life.max}`)
+  
+
+  
  
+}
+
+
+function tiraro4(){
+
+
+  function scrollWin(x, y) {
+    window.scrollBy(x, y);
+  }
+  scrollWin(0,-5000)
+
+  let current = Number($('#lifeCurrento').val()) - 4
+  const max = Number($('#lifeMaxo').val())
+
+  
+  data.life.current = current
+  data.life.max = max
+
+  const zero = 0
+  if (current < zero) {
+    current.add(++zero)
+  }
 
   $('.lifeBaro').css('width', `${calculateBar(data.life.current, data.life.max)}%`)
   
@@ -750,6 +784,35 @@ function tiraro2(){
 
 
 
+function tiraro3(){
+
+
+  function scrollWin(x, y) {
+    window.scrollBy(x, y);
+  }
+  scrollWin(0,-5000)
+
+  let current = Number($('#lifeCurrento').val()) - 2
+  const max = Number($('#lifeMaxo').val())
+
+  
+  data.life.current = current
+  data.life.max = max
+
+  const zero = 0
+  if (current < zero) {
+    current.add(++zero)
+  }
+
+  $('.lifeBaro').css('width', `${calculateBar(data.life.current, data.life.max)}%`)
+  
+  $('#lifeCurrento').val(data.life.current) 
+  $('#lifeCounto').text(`${data.life.current}/${data.life.max}`)
+  
+rollDano_4()
+  
+ 
+}
 
 
 function adddi(){
